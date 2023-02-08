@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -na . cd .. /tmp
+ls na . cd .. /boot
