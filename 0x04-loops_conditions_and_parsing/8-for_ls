@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
-# This script is displaying "Best School" 10 times
-for i in "."/*; do
-	echo "$i" | cut -d'-' -f2
+# Displays:
+#
+#   The content of the current directory
+#   In a list format
+#   Where only the part of the name after the first dash is displayed (refer to the example)
+curr_content=$("ls")
+
+for i in $curr_content ; do
+    echo "$i" | cut -d'-' -f2
 done
