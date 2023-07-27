@@ -4,8 +4,6 @@ directory="."
 for i in "$directory"/*; do
 	if [ -f "$i" ]
 	then
-                base=$(basename "$i")
-                part="${$base#*-}"
-		echo "$part"
+		echo "$i" | cut -d'-' -f2
 	fi
 done
