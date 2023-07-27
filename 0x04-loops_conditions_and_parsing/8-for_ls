@@ -4,6 +4,7 @@ directory="."
 for i in "$directory"/*; do
 	if [ -f "$i" ]
 	then
-		echo "$i"
+                part=${"$i#*-"}
+		echo "$part"
 	fi
 done
