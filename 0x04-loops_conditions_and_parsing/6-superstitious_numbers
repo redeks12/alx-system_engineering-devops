@@ -15,5 +15,7 @@ do
                 ;;
                 *)
                         echo "Best School"
+                ;;
+        esac
         (("i+=1"))
 done
