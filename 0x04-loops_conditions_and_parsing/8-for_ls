@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 # This script is displaying "Best School" 10 times
-directory=$("ls")
-for i in "$directory"/*; do
-	if [ -f "$i" ]
-	then
-		echo "$i" | cut -d'-' -f2
-	fi
+for i in "."/*; do
+	echo "$i" | cut -d'-' -f2
 done
