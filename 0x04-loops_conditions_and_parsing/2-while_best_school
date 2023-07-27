@@ -3,15 +3,4 @@
 i=1
 while [ $i -le "10"]
         echo "Best School"
-<<<<<<< HEAD
-        (("i++"))
 done
-=======
-<<<<<<< HEAD
-        ((i++))
-done
-=======
-        i = $i +1
-done
->>>>>>> 0f538bfe1870bee239ad28e686718125f83c45d8
->>>>>>> 68ef3ef917216490096429c5681d38dd09621ebd
