@@ -14,7 +14,7 @@ do
                         echo "bad luck from italy"
                 ;;
                 *)
-                        echo "Best School"
+                        echo "$i"
                 ;;
         esac
         (("i+=1"))
