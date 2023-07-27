@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # This script is displaying "Best School" 10 times
-directory="."
+directory=$("ls")
 for i in "$directory"/*; do
 	if [ -f "$i" ]
 	then
