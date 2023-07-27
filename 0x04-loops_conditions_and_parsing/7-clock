@@ -10,5 +10,6 @@ do
                 echo $min
                 (("$min+=1"))
         done
+        min=1
         (("$hour+=1"))
 done
