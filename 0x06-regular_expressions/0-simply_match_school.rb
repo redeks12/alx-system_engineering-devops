@@ -1,2 +1,3 @@
 #!/usr/bin/env ruby
-puts ARGV[1]
+for i in ARGV[1]
+        puts i
