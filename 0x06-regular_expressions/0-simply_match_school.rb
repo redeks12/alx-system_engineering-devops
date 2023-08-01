@@ -2,5 +2,6 @@
 # for i in ARGV[1]
 #         puts i
 # end
-arr = ARGV.to_s
-puts arr[1]
+for arg in ARGV
+        puts arg
+end
