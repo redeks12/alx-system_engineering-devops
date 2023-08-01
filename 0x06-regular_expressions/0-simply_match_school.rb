@@ -3,4 +3,4 @@
 #         puts i
 # end
 arr = ARGV.to_s
-puts arr[0]
+puts arr[1]
