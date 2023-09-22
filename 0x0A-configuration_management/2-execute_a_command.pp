@@ -2,5 +2,4 @@
 
 exec { 'terminate_killmenow':
   command => 'pkill killmenow'
-  onlyif  => 'ps aux | grep killmenow'
 }
