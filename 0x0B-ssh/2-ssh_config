@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
-# configuration for the ssh 
+include /etc/ssh/ssh_config.d/*.conf
+
 Host *
     PasswordAuthentication no
     IdentityFile ~/.ssh/school
