@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # using puppet to configure ssh
-import stdlib
+include stdlib
 
 file_line { 'add_idetity_file':
 	path  => '/etc/ssh/ssh_config',
