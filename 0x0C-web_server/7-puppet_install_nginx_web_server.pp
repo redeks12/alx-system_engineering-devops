@@ -48,3 +48,13 @@ class mymodule::nginx {
     require => File['/etc/nginx/sites-available/default'],
   }
 }
+
+exec { 'text nginx':
+  command  => "sudo nginx -t",
+  provider => 'shell',
+}
+
+exec { 'restart nginx':
+  command  => "sudo service nginx restart",
+  provider => 'shell',
+}
