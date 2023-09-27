@@ -44,8 +44,8 @@ class mymodule::nginx {
 
   file { '/etc/nginx/sites-enabled/default':
     ensure  => 'link',
-    target  => '/etc/nginx/sites-available/default',
-    require => File['/etc/nginx/sites-available/default'],
+    target  => '/etc/nginx/sites-enabled/default',
+    require => File['/etc/nginx/sites-enabled/default'],
   }
 }
 
