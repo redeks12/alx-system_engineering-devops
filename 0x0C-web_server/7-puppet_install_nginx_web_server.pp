@@ -20,7 +20,7 @@ file { '/var/www/html/index.html':
 }
 
 class mymodule::nginx {
-  file { '/etc/nginx/sites-available/default':
+  file { '/etc/nginx/sites-enabled/default':
     ensure  => 'file',
     content => '
       server {
