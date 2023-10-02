@@ -18,7 +18,7 @@ file { '/var/www/html/index.html':
     ensure => 'file',
     content => 'Hello World!'
 }
-$HOSTNAME = $::hostname
+$hostname = $::hostname
 class mymodule::nginx {
   file { '/etc/nginx/sites-enabled/default':
     ensure  => 'file',
@@ -31,7 +31,7 @@ class mymodule::nginx {
               index index.html index.htm index.nginx-debian.html;
 
               server_name _;
-              add_header X-Served-By $HOSTNAME;|' /etc/nginx/sites-enabled/default
+              add_header X-Served-By $hostname;|' /etc/nginx/sites-enabled/default
 
               location / {
                   try_files $uri $uri/ =404;
