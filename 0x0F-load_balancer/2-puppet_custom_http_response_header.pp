@@ -1,22 +1,13 @@
 # Automating project requirements using Puppet
 
-package { 'nginx':
-  ensure => installed,
-}
-$host_name = $::hostname
+exec { add_header:
+    command =>"sudo apt-get update
+    sudo apt-get -y install nginx
+    sudo ufw allow 'Nginx HTTP'
+    sudo sed -i 's|server_name _;|server_name _;\n\tadd_header X-Served-By $HOSTNAME;|' /etc/nginx/sites-enabled/default
+    sudo nginx -t
+    sudo service nginx restart",
 
-file_line { 'install':
-  ensure => 'present',
-  path   => '/etc/nginx/sites-enabled/default',
-  after  => 'server_name _;',
-  line   => "add_header X-Served-By $host_name;",
-}
+    provider => "shell"
 
-file { '/var/www/html/index.html':
-  content => 'Hello World!',
-}
-
-service { 'nginx':
-  ensure  => running,
-  require => Package['nginx'],
 }
