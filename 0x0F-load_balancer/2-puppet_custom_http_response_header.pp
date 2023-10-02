@@ -1,60 +1,22 @@
-#!/usr/bin/env bash
-# using puppet to configure ssh
+# Automating project requirements using Puppet
 
 package { 'nginx':
-    ensure => 'installed',
+  ensure => installed,
 }
+$HOSTNAME = $::hostname
 
-file {'/etc/nginx/nginx.conf':
-    ensure => 'file',
-}
-
-exec { 'allow nginx':
-  command  => "sudo ufw allow 'Nginx HTTP'",
-  provider => 'shell',
+file_line { 'install':
+  ensure => 'present',
+  path   => '/etc/nginx/sites-enabled/default',
+  after  => 'server_name _;',
+  line   => 'add_header X-Served-By $HOSTNAME;',
 }
 
 file { '/var/www/html/index.html':
-    ensure => 'file',
-    content => 'Hello World!'
-}
-$hostname = $::hostname
-class mymodule::nginx {
-  file { '/etc/nginx/sites-enabled/default':
-    ensure  => 'file',
-    content => '
-      server {
-              listen 80;
-
-              root /var/www/html;
-
-              index index.html index.htm index.nginx-debian.html;
-
-              server_name _;
-              add_header X-Served-By "$hostname";
-
-              location / {
-                  try_files $uri $uri/ =404;
-              }
-        }
-    ',
-    require => Package['nginx'],
-    notify  => Service['nginx'],
-  }
-
-  file { '/etc/nginx/sites-enabled/default':
-    ensure  => 'link',
-    target  => '/etc/nginx/sites-enabled/default',
-    require => File['/etc/nginx/sites-enabled/default'],
-  }
+  content => 'Hello World!',
 }
 
-exec { 'text nginx':
-  command  => "sudo nginx -t",
-  provider => 'shell',
-}
-
-exec { 'restart nginx':
-  command  => "sudo service nginx restart",
-  provider => 'shell',
+service { 'nginx':
+  ensure  => running,
+  require => Package['nginx'],
 }
