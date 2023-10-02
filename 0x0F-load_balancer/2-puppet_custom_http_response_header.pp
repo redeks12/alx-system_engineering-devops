@@ -3,7 +3,7 @@
 # package { 'nginx':
 #   ensure => installed,
 # }
-$hostname = $::hostname
+$host_name = $::hostname
 notify { "PATH Variable": message => "PATH is $hostname" }
 
 # file_line { 'install':
