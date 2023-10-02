@@ -9,7 +9,7 @@ file_line { 'install':
   ensure => 'present',
   path   => '/etc/nginx/sites-enabled/default',
   after  => 'server_name _;',
-  line   => 'add_header X-Served-By $host_name;',
+  line   => "add_header X-Served-By $host_name;",
 }
 
 file { '/var/www/html/index.html':
