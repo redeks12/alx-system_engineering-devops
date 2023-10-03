@@ -3,8 +3,6 @@
 sudo apt-get update
 sudo apt-get -y install haproxy
 
-sudo service haproxy start
-
 echo "frontend nandom_front" | sudo tee -a /etc/haproxy/haproxy.cfg
 echo "\tbind *:80" | sudo tee -a /etc/haproxy/haproxy.cfg
 echo "\tdefault_backend nandom_back" | sudo tee -a /etc/haproxy/haproxy.cfg
