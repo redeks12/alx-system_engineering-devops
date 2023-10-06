@@ -6,7 +6,7 @@ get_domains() {
     local param_1="$1"
     local param_2="$2"
     if [ "$param_2" ]; then
-        dig "$param_2.$param_1" | grep -A1 'ANSWER SECTION:' | awk 'BEGIN { tp = "$4" td = "$5" printf("%s %s", tp, td)}'
+        dig "$param_2.$param_1" | grep -A1 'ANSWER SECTION:' | awk '{print "The subdomain $param_2 is a" + $4 + $5}'
         return
     fi
     for sub in "${subs[@]}"; do
