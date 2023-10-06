@@ -2,15 +2,17 @@
 # Configure your domain zone so that the subdomain www points to your load-balancer IP (lb-01).
 # shellcheck disable=SC2086
 get_domains() {
-    subs=('web-01' 'web-02' 'lb-01' 'www')
+    subs=('www' 'lb-01' 'web-01' 'web-02')
+
     local param_1="$1"
     local param_2="$2"
+
     if [ "$param_2" ]; then
-        dig "$param_2.$param_1" | grep -A1 'ANSWER SECTION:' | awk -v s="$param_2" 'BEGIN { FS = " " } ; { print "The subdomain " s " is a " $4 " record and points to " $5}'
+        dig "$param_2.$param_1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk -v s="$param_2" 'BEGIN { FS = " " } ; { print "The subdomain " s " is a " $4 " record and points to " $5}'
         return
     fi
     for sub in "${subs[@]}"; do
-        dig "$sub.$param_1" | grep -A1 'ANSWER SECTION:' | awk -v s="$sub" 'BEGIN { FS = " " } ; { print "The subdomain " s " is a " $4 " record and points to " $5}'
+        dig "$sub.$param_1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk -v s="$sub" 'BEGIN { FS = " " } ; { print "The subdomain " s " is a " $4 " record and points to " $5}'
     done
 }
 get_domains $1 $2
