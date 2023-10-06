@@ -5,7 +5,7 @@ get_domains() {
     subs=('web-01' 'web-02' 'lb-01' 'www')
     local param_1=$1
     local param_2=$2
-    if [ -z "$param_2" ]; then
+    if [ "$param_2" ]; then
         echo "the domains are $sub.$param_1"
         return
     fi
