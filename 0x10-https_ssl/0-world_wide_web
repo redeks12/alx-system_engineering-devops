@@ -10,7 +10,7 @@ get_domains() {
         return
     fi
     for sub in "${subs[@]}"; do
-        dig "$sub.$param_1" | grep -A1 'ANSWER SECTION:'
+        dig "$sub.$param_1" | grep -A1 'ANSWER SECTION:' | awk -v s="$sub" 'BEGIN { FS = " " } ; { print "The subdomain " s " is a " $4 " record and points to " $5}'
     done
 }
 get_domains $1 $2
