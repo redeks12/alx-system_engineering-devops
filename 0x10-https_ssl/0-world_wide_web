@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Configure your domain zone so that the subdomain www points to your load-balancer IP (lb-01).
+# shellcheck disable=SC2086
+get_domains() {
+    subs=('web-01', 'web-02', 'lb-01', 'www')
+    local param_1=$1
+    local param_2=$2
+    # if [ -z "$param_2" ]; then
+    for sub in "${subs[@]}"; do
+        echo "the domains are $sub.$param_1"
+    done
+    echo "second $param_2"
+}
+get_domains $1 $2

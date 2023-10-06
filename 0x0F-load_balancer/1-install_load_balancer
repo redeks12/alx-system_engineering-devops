@@ -13,4 +13,3 @@ echo -e "\tserver 299585-web-02 100.25.17.121:80 check" | sudo tee -a /etc/hapro
 echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
 
 sudo service haproxy restart
-listen [::]:80 default_server ipv6only=on;
