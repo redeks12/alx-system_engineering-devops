@@ -6,7 +6,7 @@ get_domains() {
     local param_1=$1
     local param_2=$2
     if [ "$param_2" ]; then
-        echo "the domains are $sub.$param_1"
+        echo "the domains are $param2.$param_1"
         return
     fi
     for sub in "${subs[@]}"; do
