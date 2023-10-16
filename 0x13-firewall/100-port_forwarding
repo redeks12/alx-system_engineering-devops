@@ -1,0 +1,3 @@
+sudo ufw disable
+sudo ufw route allow proto tcp from any to any port 8080 -> 80
+sudo ufw enable
