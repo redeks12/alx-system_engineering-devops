@@ -6,3 +6,28 @@ eval $("ssh-agent")
 ssh-add ~/.ssh/school
 
 ssh ubuntu@100.25.17.121
+
+# CREATE USER 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
+# CREATE USER 'replica_user'@'%' IDENTIFIED BY 'projectcorrection280hbtn';
+# GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'replica_user'@'%';
+# GRANT INSERT ON *.* TO 'holberton_user'@'localhost';
+# GRANT SELECT ON *.* TO 'holberton_user'@'localhost';
+# CREATE TABLE nexus6 (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(256) NOT NULL);
+# INSERT INTO `nexus6` (`name`) VALUES ("School");
+
+
+# sudo mysqldump -u holberton_user tyrell_corp > tyrell_corp.sql
+
+CHANGE REPLICATION SOURCE TO
+SOURCE_HOST='54.145.85.177',
+SOURCE_USER='replica_user',
+SOURCE_PASSWORD='projectcorrection280hbtn',
+SOURCE_LOG_FILE='mysql-bin.000170',
+SOURCE_LOG_POS=381;
+
+CHANGE MASTER TO
+MASTER_HOST='54.145.85.177',
+MASTER_USER='replica_user',
+MASTER_PASSWORD='projectcorrection280hbtn',
+MASTER_LOG_FILE='mysql-bin.000170',
+MASTER_LOG_POS=381;
