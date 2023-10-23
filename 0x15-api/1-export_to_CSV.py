@@ -7,10 +7,7 @@ from sys import argv
 import requests
 
 if __name__ == "__main__":
-    tasks = requests.get(
-        "https://jsonplaceholder.typicode.com/todos",
-        params={"userId": "{}".format(argv[1])},
-    )
+    tasks = requests.get("https://jsonplaceholder.typicode.com/todos")
     todos = tasks.json()
     response = requests.get(
         "https://jsonplaceholder.typicode.com/users/{}".format(argv[1])
@@ -18,13 +15,16 @@ if __name__ == "__main__":
     user_ = response.json()
 
     with open("{}.csv".format(user_.get("id")), "w", newline="") as csvfile:
-        writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL, quotechar='"')
+        writer = csv.writer(
+            csvfile, quoting=csv.QUOTE_ALL, quotechar='"', lineterminator="\n"
+        )
         for to in todos:
-            writer.writerow(
-                [
-                    user_.get("id"),
-                    user_.get("name"),
-                    to.get("completed"),
-                    to.get("title"),
-                ]
-            )
+            if int(argv[1]) == to.get("userId"):
+                writer.writerow(
+                    [
+                        user_.get("id"),
+                        user_.get("name"),
+                        to.get("completed"),
+                        to.get("title"),
+                    ]
+                )
