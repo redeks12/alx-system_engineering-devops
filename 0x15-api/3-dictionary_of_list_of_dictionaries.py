@@ -27,4 +27,4 @@ if __name__ == "__main__":
         all_users[user.get("id")] = fd
 
     with open("todo_all_employees.json", "w", encoding="utf-8") as f:
-        json.dump(all_users, f, indent=4)
+        json.dump(all_users, f)
