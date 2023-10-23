@@ -17,7 +17,7 @@ if __name__ == "__main__":
     )
     user_ = response.json()
 
-    with open("USER_ID.json", "w", encoding="utf-8") as f:
+    with open("{}.json".format(user_.get("id")), "w", encoding="utf-8") as f:
         fd = [
             {
                 "task": {
