@@ -2,9 +2,8 @@
 """Write a Python script that, using this REST API, for a given 
 employee ID, returns information about his/her TODO list progress."""
 import json
-from sys import argv
-
 import requests
+
 
 if __name__ == "__main__":
     response = requests.get("https://jsonplaceholder.typicode.com/users")
@@ -18,7 +17,7 @@ if __name__ == "__main__":
         todos = tasks.json()
         fd = [
             {
-                "username": user.get("name"),
+                "username": user.get("username"),
                 "task": to.get("title"),
                 "completed": to.get("completed"),
             }

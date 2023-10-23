@@ -2,9 +2,9 @@
 """Write a Python script that, using this REST API, for a given 
 employee ID, returns information about his/her TODO list progress."""
 import json
+import requests
 from sys import argv
 
-import requests
 
 if __name__ == "__main__":
     tasks = requests.get(
@@ -22,7 +22,7 @@ if __name__ == "__main__":
             {
                 "task": to.get("title"),
                 "completed": to.get("completed"),
-                "username": user_.get("name"),
+                "username": user_.get("username"),
             }
             for to in todos
         ]
