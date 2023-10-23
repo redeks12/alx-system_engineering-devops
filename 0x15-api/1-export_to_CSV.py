@@ -24,7 +24,7 @@ if __name__ == "__main__":
                     [
                         user_.get("id"),
                         user_.get("name"),
-                        to.get("completed"),
+                        str(to.get("completed")),
                         to.get("title"),
                     ]
                 )
