@@ -18,9 +18,9 @@ if __name__ == "__main__":
         todos = tasks.json()
         fd = [
             {
+                "username": user.get("name"),
                 "task": to.get("title"),
                 "completed": to.get("completed"),
-                "username": user.get("name"),
             }
             for to in todos
         ]

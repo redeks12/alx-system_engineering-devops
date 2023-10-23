@@ -18,7 +18,7 @@ if __name__ == "__main__":
     user_ = response.json()
 
     with open("{}.csv".format(user_.get("id")), "w", newline="") as csvfile:
-        writer = csv.writer(csvfile)
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL, quotechar='"')
         for to in todos:
             writer.writerow(
                 [

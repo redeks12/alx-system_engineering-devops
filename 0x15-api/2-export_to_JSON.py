@@ -20,11 +20,9 @@ if __name__ == "__main__":
     with open("{}.json".format(user_.get("id")), "w", encoding="utf-8") as f:
         fd = [
             {
-                "task": {
-                    "task": to.get("title"),
-                    "completed": to.get("completed"),
-                    "username": user_.get("name"),
-                }
+                "task": to.get("title"),
+                "completed": to.get("completed"),
+                "username": user_.get("name"),
             }
             for to in todos
         ]
