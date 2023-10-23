@@ -26,4 +26,4 @@ if __name__ == "__main__":
             user_.get("name"), num, len(todos)
         )
     )
-    [print("\t{}".format(com)) for com in comt]
+    [print("\t {}".format(com)) for com in comt]

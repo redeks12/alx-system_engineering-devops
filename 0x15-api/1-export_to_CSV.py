@@ -2,9 +2,9 @@
 """Write a Python script that, using this REST API, for a given 
 employee ID, returns information about his/her TODO list progress."""
 import csv
-import requests
 from sys import argv
 
+import requests
 
 if __name__ == "__main__":
     tasks = requests.get(
@@ -22,9 +22,9 @@ if __name__ == "__main__":
         for to in todos:
             writer.writerow(
                 [
-                    "{}".format(to.get("userId")),
-                    "{}".format(user_.get("name")),
-                    "{}".format(to.get("completed")),
-                    "{}".format(to.get("title")),
+                    user_.get("id"),
+                    user_.get("name"),
+                    to.get("completed"),
+                    to.get("title"),
                 ]
             )
