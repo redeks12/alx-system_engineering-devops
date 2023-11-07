@@ -31,14 +31,14 @@ def count_words(subreddit, word_list, hot_list=[], after=None):
 
         afterd = response.json()["data"]["after"]
         if afterd is None:
-            word_dict = {val: 0 for val in word_list}
+            wrd = {val: 0 for val in word_list}
             for item in my_list:
                 new_str = item.lower().split()
                 for key in new_str:
-                    if key in word_dict:
-                        word_dict[key] += 1
-            sort_dict = sorted(word_dict.items(), key=lambda item: (-item[1], item[0]))
-            [print("{}: {}".format(key, val)) for key, val in sort_dict if val]
+                    if key in wrd:
+                        wrd[key] += 1
+            srd = sorted(wrd.items(), key=lambda item: (-item[1], item[0]))
+            [print("{}: {}".format(key, val)) for key, val in srd if val]
             return my_list
         else:
             return count_words(subreddit, word_list, my_list, afterd)
