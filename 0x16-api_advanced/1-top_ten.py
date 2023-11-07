@@ -13,7 +13,7 @@ def top_ten(subreddit):
         headers={
             "User-Agent": "subscribercheck",
         },
-        params={"limit": "9"},
+        params={"limit": "10"},
         allow_redirects=False,
     )
     if response.status_code != 200:
