@@ -1,12 +1,14 @@
 #!/usr/bin/python3
-"""Write a function that queries the Reddit API and prints the titles of the first
+"""Write a function that queries the
+Reddit API and prints the titles of the first
 10 hot posts listed for a given subreddit."""
 
 import requests
 
 
 def recurse(subreddit, hot_list=[], after=None):
-    """Write a function that queries the Reddit API and prints the titles of the first
+    """Write a function that queries the
+    Reddit API and prints the titles of the first
     10 hot posts listed for a given subreddit."""
     my_list = hot_list
     params = {"limit": "100"}
@@ -20,7 +22,7 @@ def recurse(subreddit, hot_list=[], after=None):
         params=params,
         allow_redirects=False,
     )
-    if response.status_code != 200:
+    if response.status_code is not 200:
         return None
     resp = response.json()["data"]["children"]
     if resp:
@@ -28,7 +30,7 @@ def recurse(subreddit, hot_list=[], after=None):
             my_list.append(i["data"]["title"])
 
         afterd = response.json()["data"]["after"]
-        if afterd == None:
+        if afterd is None:
             return my_list
         else:
             return recurse(subreddit, my_list, afterd)
